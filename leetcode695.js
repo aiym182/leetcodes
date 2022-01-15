@@ -29,48 +29,47 @@ var maxAreaOfIsland = function (grid) {
   let max = 0
 
   for (let i = 0; i < grid.length; i++) {
-    for (let j = 0; j < grid[0].length; j++) {
-      if (grid[i][j] == 1) {
-        let area = visitingIsland(i, j)
+    for (let j = 0; j < grid[i].length; j++) {
+      if (grid[i][j] === 1) {
+        let area = visitIsland(i, j)
+
         max = Math.max(area, max)
       }
     }
   }
 
-  function visitingIsland(row, col) {
+  function visitIsland(x, y) {
     let area = 0
     if (
-      row < 0 ||
-      col < 0 ||
-      grid.length <= row ||
-      grid[row].length <= row ||
-      grid[row][col] === 0
+      x < 0 ||
+      y < 0 ||
+      x >= grid.length ||
+      y >= grid[x].length ||
+      grid[x][y] == 0
     ) {
       return 0
     }
 
-    grid[row][col] = 0
+    grid[x][y] = 0
 
     area =
       1 +
-      visitingIsland(row - 1, col) +
-      visitingIsland(row + 1, col) +
-      visitingIsland(row, col - 1) +
-      visitingIsland(row, col + 1)
+      visitIsland(x + 1, y) +
+      visitIsland(x - 1, y) +
+      visitIsland(x, y + 1) +
+      visitIsland(x, y - 1)
+
     return area
   }
+
   return max
 }
 
 console.log(
   maxAreaOfIsland([
-    [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
-    [0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0],
-    [0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+    [1, 1, 0, 0, 0],
+    [1, 1, 0, 0, 0],
+    [0, 0, 0, 1, 1],
+    [0, 0, 0, 1, 1],
   ]),
 )

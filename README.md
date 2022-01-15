@@ -2,4 +2,8 @@
 
 My leetcode Problems
 
-22. 695. 733.
+22.
+
+695.
+
+733.

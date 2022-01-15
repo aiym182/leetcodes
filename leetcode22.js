@@ -46,3 +46,5 @@ var generateParenthesis = function (n) {
   backTrack(0, 0)
   return res
 }
+
+generateParenthesis()

@@ -1,7 +1,5 @@
 # leetcodes
 
-
 My leetcode Problems
 
-22.
-733.
+22. 695. 733.

@@ -28,17 +28,16 @@ var generateParenthesis = function (n) {
   const backTrack = (open, close) => {
     if (open === close && open === n) {
       res.push(stack.join(''))
+      console.log(res)
     }
     if (open < n) {
       stack.push('(')
       backTrack(open + 1, close)
-      console.log('create Open :' + stack)
       stack.pop()
     }
     if (close < open) {
       stack.push(')')
       backTrack(open, close + 1)
-      console.log('create Close :' + stack)
       stack.pop()
     }
   }
@@ -47,4 +46,4 @@ var generateParenthesis = function (n) {
   return res
 }
 
-generateParenthesis()
+generateParenthesis(2)
